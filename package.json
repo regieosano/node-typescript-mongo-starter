@@ -4,7 +4,7 @@
   "description": "A plain starter using NodeJS, Typescript and MongoDB",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon",
+    "dev-start": "nodemon",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "lint:check": "eslint .",
