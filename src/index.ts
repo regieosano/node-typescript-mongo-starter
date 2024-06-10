@@ -11,9 +11,14 @@ import { getUsers } from "./db/users";
 dotenv.config();
 
 mongoose.Promise = Promise;
-mongoose.connect(
-  `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}${process.env.MONGO_DB_CLUSTER_STRING}`
-);
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}${process.env.MONGO_DB_CLUSTER_STRING}`
+  )
+  .then(() => {
+    console.log("Database successfully connected...");
+  });
+
 mongoose.connection.on("error", (error: Error) => console.error(error));
 
 const app = express();
