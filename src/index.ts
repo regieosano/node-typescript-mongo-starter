@@ -6,6 +6,7 @@ import compression from "compression";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import { getUsers } from "./db/users";
 
 dotenv.config();
 
@@ -28,6 +29,15 @@ app.use(
 app.use(compression());
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+app.get("/", (req, res) => {
+  res.send("Halalah APIs");
+});
+
+app.get("/users", async (req, res) => {
+  const users = await getUsers();
+  res.send(users);
+});
 
 const server = http.createServer(app);
 
